@@ -5,11 +5,11 @@ public class Student {
     private static int nextStudentId = 1;
     private String name;
     private final int studentId;
-    private int numberOfCredits;
-    private double gpa;
+    private float numberOfCredits;
+    private float gpa;
 
     public Student(String name, int studentId,
-                   int numberOfCredits, double gpa) {
+                   int numberOfCredits, float gpa) {
         this.name = name;
         this.studentId = studentId;
         this.numberOfCredits = numberOfCredits;
@@ -37,19 +37,55 @@ public class Student {
         return studentId;
     }
 
-    public int getNumberOfCredits() {
+    public float getNumberOfCredits() {
         return numberOfCredits;
     }
 
-    public void setNumberOfCredits(int aNumberOfCredits) {
+    public void setNumberOfCredits(float aNumberOfCredits) {
         numberOfCredits = aNumberOfCredits;
     }
 
-    public double getGpa() {
+    public float getGpa() {
         return gpa;
     }
 
-    public void setGpa(double aGpa) {
+    public void setGpa(float aGpa) {
         gpa = aGpa;
+    }
+
+    public void addGrade(Float grade, Float credits){
+        float currentQualityScore = getGpa() * getNumberOfCredits();
+        float newCurrentQualityScore = currentQualityScore + grade;
+        float totalNumberOfCredits = getNumberOfCredits() + credits;
+        float newGpa = newCurrentQualityScore/totalNumberOfCredits;
+
+        setNumberOfCredits(totalNumberOfCredits);
+        setGpa(newGpa);
+
+    }
+
+    public String getGradeLevel(){
+        float numberOfCredits = getNumberOfCredits();
+        if(numberOfCredits >= 90){
+            return "Senior";
+        }
+        else if(numberOfCredits >= 60){
+            return "Junior";
+        }
+        else if(numberOfCredits >= 30){
+            return "Sophomore";
+        }
+        else{
+            return "Freshman";
+        }
+    }
+
+    public String toString(){
+        return name + "{Credits: " + numberOfCredits + ", GPA: " + gpa + ")";
+    }
+
+    public boolean equals(Object o){
+        Student theStudent = (Student) o;
+        return theStudent.getStudentId() == getStudentId();
     }
 }

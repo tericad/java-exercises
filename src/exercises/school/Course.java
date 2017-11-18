@@ -38,5 +38,14 @@ public class Course {
         roster = aRoster;
     }
 
+    public String toString(){
+        return courseId + " is the id number for " + courseName;
+    }
+
+    public boolean equals(Object o){
+        Course theCourse = (Course) o;
+        return theCourse.getCourseId() == getCourseId();
+    }
+
 
 }
