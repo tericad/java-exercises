@@ -28,4 +28,18 @@ public class Menu {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
+    public void addMenuItem(MenuItem item){
+        itemList.add(item);
+        setUpdated(new Date());
+    }
+
+    public void removeMenuItem(MenuItem item){
+        itemList.remove(item);
+        setUpdated(new Date());
+    }
+
+    public void menuUpdated(){
+        System.out.println(updated);
+    }
 }

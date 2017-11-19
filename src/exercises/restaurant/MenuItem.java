@@ -1,6 +1,10 @@
 package exercises.restaurant;
 
 import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import static java.util.Calendar.MONTH;
 
 public class MenuItem {
 
@@ -54,6 +58,20 @@ public class MenuItem {
 
     public Date getCreated() {
         return created;
+    }
+
+    public Boolean isNew(MenuItem item){
+
+        Calendar ago = new GregorianCalendar();
+        ago.add(MONTH,-1);
+
+        int between = item.created.compareTo(ago.getTime());
+        if(between <= 0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
 }
