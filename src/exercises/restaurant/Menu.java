@@ -42,4 +42,12 @@ public class Menu {
     public void menuUpdated(){
         System.out.println(updated);
     }
+
+    public String toString(){
+        String printMenu = "MENU";
+        for(MenuItem entry : itemList){
+            printMenu += entry.toString();
+        }
+        return printMenu;
+    }
 }

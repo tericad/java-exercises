@@ -10,13 +10,13 @@ public class MenuItem {
 
     private String name;
     private String description;
-    private double price;
+    private float price;
     private String category;
-    private final Date created;
+    private Date created;
 
 
 
-    public MenuItem(String name, String description, double price, String category, Date created){
+    public MenuItem(String name, String description, float price, String category, Date created){
         this.name = name;
         this.description = description;
         this.price = price;
@@ -40,11 +40,11 @@ public class MenuItem {
         this.description = description;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -60,6 +60,10 @@ public class MenuItem {
         return created;
     }
 
+    public final void setCreated(Date created){
+        this.created = created;
+    }
+
     public Boolean isNew(MenuItem item){
 
         Calendar ago = new GregorianCalendar();
@@ -72,6 +76,15 @@ public class MenuItem {
         else{
             return true;
         }
+    }
+
+    public String toString(){
+        return category + " -- " + name + " " + price + ": " + description;
+    }
+
+    public boolean equals(Object o){
+        MenuItem theItem = (MenuItem) o;
+        return theItem.getName() == getName();
     }
 
 }
